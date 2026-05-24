@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guiloutou – Son, Lumière, Énergie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#C9A84C;
+  --gold-light:#E8D08A;
+  --teal:#1D9E75;
+  --teal-dark:#085041;
+  --orange:#C84B20;
+  --noir:#0E0D0B;
+  --noir2:#1A1814;
+  --noir3:#252320;
+  --cream:#F5F0E8;
+  --muted:#8A8070;
+}
+body{background:var(--noir);color:var(--cream);font-family:'Crimson Pro',serif;overflow-x:hidden}
+
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(14,13,11,0.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(201,168,76,0.2);
+  padding:0 2rem;
+  display:flex;align-items:center;justify-content:space-between;height:56px;
+}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.12em;color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+
+.hero{
+  min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:4rem 2rem;text-align:center;
+  background:
+    repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(201,168,76,0.04) 60px),
+    repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(201,168,76,0.04) 60px),
+    var(--noir);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 50% 60%,rgba(29,158,117,0.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-tag{
+  font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--teal);
+  border:1px solid rgba(29,158,117,0.4);
+  padding:4px 14px;border-radius:2px;margin-bottom:2rem;display:inline-block;
+}
+.hero h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3.5rem,10vw,7rem);
+  letter-spacing:0.06em;line-height:0.95;
+  color:var(--cream);margin-bottom:1rem;
+}
+.hero h1 span{color:var(--gold)}
+.hero-sub{
+  font-size:1.25rem;font-style:italic;color:var(--muted);
+  max-width:520px;line-height:1.6;margin-bottom:2.5rem;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.btn-primary{
+  background:var(--gold);color:var(--noir);
+  font-family:'DM Mono',monospace;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;
+  padding:12px 28px;border-radius:2px;text-decoration:none;border:none;cursor:pointer;
+  transition:background 0.2s,transform 0.15s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-1px)}
+.btn-outline{
+  background:transparent;color:var(--cream);
+  font-family:'DM Mono',monospace;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;
+  padding:12px 28px;border-radius:2px;text-decoration:none;
+  border:1px solid rgba(245,240,232,0.3);cursor:pointer;
+  transition:border-color 0.2s,transform 0.15s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-1px)}
+
+section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.section-label{
+  font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--teal);margin-bottom:0.75rem;display:block;
+}
+.section-title{
+  font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:0.05em;
+  color:var(--cream);margin-bottom:1rem;
+}
+.divider{width:48px;height:2px;background:var(--gold);margin:1rem 0 2.5rem}
+
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.service-card{
+  background:var(--noir2);border:1px solid rgba(201,168,76,0.15);
+  border-radius:3px;padding:1.75rem;position:relative;overflow:hidden;
+  transition:border-color 0.25s,transform 0.2s;
+}
+.service-card:hover{border-color:rgba(201,168,76,0.5);transform:translateY(-3px)}
+.service-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:0;transition:opacity 0.25s;
+}
+.service-card:hover::after{opacity:1}
+.service-icon{font-size:1.8rem;margin-bottom:1rem}
+.service-name{
+  font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.06em;
+  color:var(--gold);margin-bottom:0.5rem;
+}
+.service-desc{font-size:1rem;color:var(--muted);line-height:1.6}
+.service-items{margin-top:1rem;list-style:none}
+.service-items li{
+  font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--cream);
+  padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.05);
+  display:flex;align-items:center;gap:8px;
+}
+.service-items li::before{content:'▸';color:var(--teal);font-size:0.8rem}
+
+.photo-full{background:var(--noir2);padding:5rem 0}
+.photo-full-inner{max-width:1100px;margin:0 auto;padding:0 2rem}
+.photo-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-template-rows:220px 220px;
+  gap:8px;border-radius:4px;overflow:hidden;margin-top:2rem;
+}
+.photo-slot{
+  background:var(--noir3);display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:8px;color:var(--muted);position:relative;overflow:hidden;cursor:pointer;
+}
+.photo-slot img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-slot:hover .photo-overlay{opacity:1}
+.photo-overlay{
+  position:absolute;inset:0;background:rgba(201,168,76,0.12);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity 0.2s;
+}
+.photo-slot.large{grid-row:1/3}
+.photo-icon{font-size:2rem;opacity:0.3}
+.photo-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;opacity:0.4}
+.photo-border-accent{border:1px solid rgba(201,168,76,0.08)}
+.photo-hint{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;text-align:center;margin-top:1rem;text-transform:uppercase;opacity:0.5}
+
+.equip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem}
+.equip-card{
+  background:var(--noir2);border:1px solid rgba(201,168,76,0.12);
+  border-radius:3px;padding:1.25rem;text-align:center;transition:border-color 0.2s;
+}
+.equip-card:hover{border-color:rgba(29,158,117,0.4)}
+.equip-photo{
+  height:120px;background:var(--noir3);border-radius:2px;margin-bottom:1rem;
+  display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:1.5rem;
+  overflow:hidden;
+}
+.equip-photo img{width:100%;height:100%;object-fit:cover}
+.equip-name{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.06em;color:var(--cream)}
+.equip-cat{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-top:4px}
+
+.clients-section{text-align:center}
+.clients-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:1px;background:rgba(201,168,76,0.1);
+  border:1px solid rgba(201,168,76,0.1);border-radius:4px;overflow:hidden;margin-top:2rem;
+}
+.client-slot{
+  background:var(--noir2);padding:1.75rem 1rem;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;
+  transition:background 0.2s;
+}
+.client-slot:hover{background:var(--noir3)}
+.client-logo{
+  width:80px;height:80px;border-radius:4px;
+  background:var(--noir3);border:1px solid rgba(201,168,76,0.15);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.05em;
+  overflow:hidden;
+}
+.client-logo img{width:100%;height:100%;object-fit:contain;padding:8px}
+.client-name{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--cream);text-align:center;letter-spacing:0.06em;font-weight:500}
+.client-type{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--muted);text-align:center;letter-spacing:0.04em;margin-top:2px}
+
+.catalogue-band{
+  background:var(--noir2);border-top:1px solid rgba(201,168,76,0.15);
+  border-bottom:1px solid rgba(201,168,76,0.15);padding:4rem 2rem;
+}
+.catalogue-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;
+}
+.catalogue-text h2{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;letter-spacing:0.05em;color:var(--cream)}
+.catalogue-text p{font-size:1rem;color:var(--muted);margin-top:0.5rem;max-width:440px;line-height:1.6}
+.pdf-card{
+  background:var(--noir3);border:1px solid rgba(201,168,76,0.25);
+  border-radius:4px;padding:1.25rem 1.75rem;
+  display:flex;align-items:center;gap:1rem;text-decoration:none;
+  transition:border-color 0.2s,transform 0.15s;
+}
+.pdf-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.pdf-icon{
+  width:48px;height:48px;background:rgba(201,168,76,0.1);border-radius:2px;
+  display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.4rem;flex-shrink:0;
+}
+.pdf-title{font-family:'DM Mono',monospace;font-size:0.78rem;letter-spacing:0.08em;color:var(--gold);font-weight:500}
+.pdf-sub{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);margin-top:3px;letter-spacing:0.05em}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem}
+@media(max-width:640px){
+  .contact-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .photo-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .photo-slot.large{grid-row:auto}
+}
+.contact-info p{font-size:1.05rem;color:var(--muted);line-height:1.7;margin-bottom:1.5rem}
+.contact-item{
+  display:flex;align-items:center;gap:12px;padding:0.75rem 0;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.contact-item:last-child{border-bottom:none}
+.contact-item-icon{color:var(--gold);font-size:1rem;width:20px;text-align:center;flex-shrink:0}
+.contact-item-text{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--cream);letter-spacing:0.04em}
+.contact-item-text a{color:var(--cream);text-decoration:none}
+.contact-item-text a:hover{color:var(--gold)}
+.contact-form-note{
+  background:var(--noir2);border:1px solid rgba(201,168,76,0.15);
+  border-radius:3px;padding:1.75rem;
+}
+.contact-form-note p{font-size:1rem;color:var(--muted);line-height:1.7;margin-bottom:1.25rem;font-style:italic}
+.wa-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--teal);color:var(--cream);text-decoration:none;
+  font-family:'DM Mono',monospace;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;
+  padding:12px 24px;border-radius:2px;transition:background 0.2s,transform 0.15s;
+}
+.wa-btn:hover{background:var(--teal-dark);transform:translateY(-1px)}
+
+footer{
+  background:var(--noir);border-top:1px solid rgba(201,168,76,0.12);
+  padding:2rem;text-align:center;
+}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.12em;color:var(--gold);margin-bottom:0.5rem}
+.footer-sub{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase}
+.footer-line{font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(138,128,112,0.4);margin-top:1.5rem;letter-spacing:0.08em}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Guiloutou</span>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#evenements">Événements</a></li>
+    <li><a href="#materiel">Matériel</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <span class="hero-tag">Son · Lumière · Électricité événementielle</span>
+  <h1>La <span>technique</span><br>au service<br>de vos <span>événements</span></h1>
+  <p class="hero-sub">Location et installation de matériel son, lumière et électrique pour vos événements en Rhône-Alpes.</p>
+  <div class="hero-btns">
+    <a href="catalogue-guiloutou.pdf" download class="btn-primary">📄 Télécharger le catalogue</a>
+    <a href="#contact" class="btn-outline">Demander un devis</a>
+  </div>
+</div>
+
+<section id="services">
+  <span class="section-label">Ce que je propose</span>
+  <h2 class="section-title">Mes formules</h2>
+  <div class="divider"></div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🔊</div>
+      <div class="service-name">Sono+</div>
+      <p class="service-desc">Sonorisation complète pour vos événements de toutes tailles.</p>
+      <ul class="service-items">
+        <li>Enceintes actives &amp; passives</li>
+        <li>Tables de mixage</li>
+        <li>Micros HF &amp; câblés</li>
+        <li>Monitoring &amp; retours</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💡</div>
+      <div class="service-name">Élec Event</div>
+      <p class="service-desc">Solutions électriques sécurisées pour l'alimentation de vos manifestations.</p>
+      <ul class="service-items">
+        <li>Groupes électrogènes</li>
+        <li>Tableaux de distribution</li>
+        <li>Câblage &amp; raccordements</li>
+        <li>Habilitations B2V BR BC H0</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <div class="service-name">Clés en main</div>
+      <p class="service-desc">Prise en charge complète : étude, installation, conduite et démontage.</p>
+      <ul class="service-items">
+        <li>Régie technique complète</li>
+        <li>Direction technique</li>
+        <li>Coordination prestataires</li>
+        <li>Éclairage &amp; effets scéniques</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="photo-full" id="evenements">
+  <div class="photo-full-inner">
+    <span class="section-label">Réalisations</span>
+    <h2 class="section-title">Événements passés</h2>
+    <div class="divider"></div>
+    <p style="color:var(--muted);font-size:1rem;line-height:1.7">Concerts, festivals locaux, fêtes communales, salons professionnels… Quelques moments capturés sur le terrain.</p>
+    <div class="photo-grid">
+      <!-- PHOTOS : remplace les divs .photo-slot par <img src="photos/tonfichier.jpg"> dans chaque slot -->
+      <div class="photo-slot large photo-border-accent">
+        <div class="photo-icon">📷</div>
+        <span class="photo-label">Photo principale</span>
+        <div class="photo-overlay"></div>
+      </div>
+      <div class="photo-slot photo-border-accent">
+        <div class="photo-icon">📷</div>
+        <span class="photo-label">Sonorisation</span>
+        <div class="photo-overlay"></div>
+      </div>
+      <div class="photo-slot photo-border-accent">
+        <div class="photo-icon">📷</div>
+        <span class="photo-label">Éclairage</span>
+        <div class="photo-overlay"></div>
+      </div>
+      <div class="photo-slot photo-border-accent">
+        <div class="photo-icon">📷</div>
+        <span class="photo-label">Installation</span>
+        <div class="photo-overlay"></div>
+      </div>
+      <div class="photo-slot photo-border-accent">
+        <div class="photo-icon">📷</div>
+        <span class="photo-label">Régie</span>
+        <div class="photo-overlay"></div>
+      </div>
+    </div>
+    <!-- COMMENT : pour ajouter une photo, remplace le contenu d'un .photo-slot par :
+         <img src="photos/nom-de-ta-photo.jpg" alt="description">
+         Place tes photos dans un dossier "photos/" à côté du fichier index.html -->
+  </div>
+</div>
+
+<section id="materiel">
+  <span class="section-label">Parc matériel</span>
+  <h2 class="section-title">Équipements à la location</h2>
+  <div class="divider"></div>
+  <!-- ÉQUIPEMENTS : remplace les .equip-photo par <img src="photos/equip-xxx.jpg"> -->
+  <div class="equip-grid">
+    <div class="equip-card">
+      <div class="equip-photo">🔊</div>
+      <div class="equip-name">Enceintes actives</div>
+      <div class="equip-cat">Sonorisation</div>
+    </div>
+    <div class="equip-card">
+      <div class="equip-photo">🎚️</div>
+      <div class="equip-name">Console de mixage</div>
+      <div class="equip-cat">Sonorisation</div>
+    </div>
+    <div class="equip-card">
+      <div class="equip-photo">🎤</div>
+      <div class="equip-name">Micros HF</div>
+      <div class="equip-cat">Sonorisation</div>
+    </div>
+    <div class="equip-card">
+      <div class="equip-photo">💡</div>
+      <div class="equip-name">Jeux de lumières</div>
+      <div class="equip-cat">Éclairage</div>
+    </div>
+    <div class="equip-card">
+      <div class="equip-photo">⚡</div>
+      <div class="equip-name">Groupe électrogène</div>
+      <div class="equip-cat">Électricité</div>
+    </div>
+    <div class="equip-card">
+      <div class="equip-photo">🔌</div>
+      <div class="equip-name">Distribution élec</div>
+      <div class="equip-cat">Électricité</div>
+    </div>
+  </div>
+  <p style="font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);text-align:center;margin-top:1.5rem">Détail complet du parc matériel et tarifs →
+    <a href="catalogue-guiloutou.pdf" download style="color:var(--gold);text-decoration:none;margin-left:4px">Télécharger le catalogue PDF</a>
+  </p>
+</section>
+
+<div class="catalogue-band" id="catalogue">
+  <div class="catalogue-inner">
+    <div class="catalogue-text">
+      <h2>Catalogue complet</h2>
+      <p>Retrouvez l'intégralité du parc matériel, les tarifs et les conditions de location dans le catalogue téléchargeable.</p>
+    </div>
+    <a href="catalogue-guiloutou.pdf" download class="pdf-card">
+      <div class="pdf-icon">📄</div>
+      <div>
+        <div class="pdf-title">Catalogue Guiloutou 2025</div>
+        <div class="pdf-sub">PDF · Matériel, tarifs, conditions</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<section id="clients" class="clients-section">
+  <span class="section-label">Ils m'ont fait confiance</span>
+  <h2 class="section-title">Clients &amp; partenaires</h2>
+  <div class="divider" style="margin:1rem auto 2rem"></div>
+  <!-- LOGOS : remplace le contenu de chaque .client-logo par <img src="logos/nom-du-logo.png" alt="Nom"> -->
+  <div class="clients-grid">
+    <div class="client-slot">
+      <div class="client-logo" title="Les Pinpins">🎭</div>
+      <span class="client-name">Les Pinpins</span>
+      <span class="client-type">Troupe de théâtre</span>
+    </div>
+    <div class="client-slot">
+      <div class="client-logo" title="SOU École Jacques Lévine">🏫</div>
+      <span class="client-name">SOU École Jacques Lévine</span>
+      <span class="client-type">St-Didier-sous-Riverie</span>
+    </div>
+    <div class="client-slot">
+      <div class="client-logo" title="École Pierre Teyssonneyre">🏫</div>
+      <span class="client-name">École Pierre Teyssonneyre</span>
+      <span class="client-type">Grand-Croix</span>
+    </div>
+    <div class="client-slot">
+      <div class="client-logo" title="Association CAP">🤝</div>
+      <span class="client-name">Association CAP</span>
+      <span class="client-type">Commerçants &amp; artisans — Pays mornantais</span>
+    </div>
+    <div class="client-slot">
+      <div class="client-logo" title="Les Badrais de la 0">🎉</div>
+      <span class="client-name">Les Badrais de la 0</span>
+      <span class="client-type">Association</span>
+    </div>
+    <div class="client-slot">
+      <div class="client-logo" title="Les Festigones">🎪</div>
+      <span class="client-name">Les Festigones</span>
+      <span class="client-type">Montagny</span>
+    </div>
+    <div class="client-slot">
+      <div class="client-logo" title="ARPE">🌱</div>
+      <span class="client-name">ARPE</span>
+      <span class="client-type">Association</span>
+    </div>
+    <div class="client-slot">
+      <div class="client-logo" title="Particuliers">👥</div>
+      <span class="client-name">Particuliers</span>
+      <span class="client-type">Mariages, fêtes privées…</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <span class="section-label">Parlons-en</span>
+  <h2 class="section-title">Demander un devis</h2>
+  <div class="divider"></div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>Fêtes communales, concerts, salons, mariages… Chaque événement est unique. Contactez-moi pour qu'on en parle et construire ensemble la solution technique adaptée.</p>
+      <div class="contact-item">
+        <span class="contact-item-icon">📍</span>
+        <span class="contact-item-text">Rhône-Alpes · Déplacements possibles</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon">📞</span>
+        <span class="contact-item-text"><a href="tel:+33663017054">06 63 01 70 54</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon">✉️</span>
+        <span class="contact-item-text"><a href="mailto:guiloutou69@gmail.com">guiloutou69@gmail.com</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon">📋</span>
+        <span class="contact-item-text">SIRET : 940 440 340 00013</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon">⚡</span>
+        <span class="contact-item-text">Habilitations B2V · BR · BC · H0</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon">🎆</span>
+        <span class="contact-item-text">Certification pyrotechnie F4T2</span>
+      </div>
+    </div>
+    <div class="contact-form-note">
+      <p>La façon la plus rapide de me joindre et d'obtenir un devis ? Un message WhatsApp avec votre date, le lieu et le type d'événement.</p>
+      <a href="https://wa.me/33663017054?text=Bonjour%20Guillaume%2C%20je%20souhaite%20un%20devis%20pour%20mon%20%C3%A9v%C3%A9nement%20%3A%0A%0A-%20Date%20%3A%0A-%20Lieu%20%3A%0A-%20Type%20d%27%C3%A9v%C3%A9nement%20%3A%0A-%20Nombre%20de%20personnes%20%3A" class="wa-btn" target="_blank" rel="noopener">
+        💬 Envoyer un message WhatsApp
+      </a>
+      <p style="margin-top:1.25rem;font-size:0.85rem;color:rgba(138,128,112,0.6);font-style:normal">Réponse garantie sous 24h · Devis gratuit &amp; sans engagement</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Guiloutou</div>
+  <div class="footer-sub">Son · Lumière · Électricité événementielle · Rhône-Alpes</div>
+  <div class="footer-line">
+    Micro-entreprise · SIRET 940 440 340 00013 · guiloutou69@gmail.com · 06 63 01 70 54<br>
+    Habilitations électriques B2V BR BC H0 · Certification pyrotechnie F4T2
+  </div>
+</footer>
+
+</body>
+</html>
